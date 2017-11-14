@@ -26,9 +26,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Current Weather</a></li>
-                <li><a href="#radar">Map Radar</a></li>
-                <li><a href="#forecast">3 Day Forecast</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
         </div>
     </div>
@@ -36,47 +35,29 @@
 
 <!-- First Container -->
 <section id="home">
-    <div class="container-fluid bg-1 text-center">
-        <div class="row">
-            <div class="col-sm-6">
-                <h1 class="margin">City</h1>
-                <h1 class="margin">72 F</h1>
-            </div>
-            <div class="col-sm-4">
-                <p>It's going to rain today. You should bring an umbrella and some rainboots</p>
-                <img src="img/umbrella.png" alt="umbrella"/>
-                <p>
-                <form method="post" class="pull-right" style="color: black">
-                    <input name="search" type="text" placeholder="ex: San Francisco, CA"/>
-                    <button type="submit" class="btn btn-success">Get the weather</button>
-                </form>
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Second Container -->
-<section id="radar">
-    <div class="container-fluid bg-2 text-center">
-        <h3 class="margin">Radar</h3>
-    </div>
-</section>
-
-<!-- Third Container (Grid) -->
-<section id="forecast">
-    <div class="container-fluid bg-3 text-center">
-        <h3 class="margin">Three Day Forecast</h3>
-
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3">
-                <h4>Hello</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h1 class="margin">Get Directions</h1>
+                <form method="post" class="pull-right" style="color: black">
+                    <input name="search" type="text" placeholder="Origin"/>
+                    <input name="search" type="text" placeholder="Destination"/>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-9">
+                <iframe
+                        height="100%"
+                        width="100%"
+                        frameborder="0"
+                        style="border:0"
+                        th:src="@{${url}}">
+                </iframe>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
