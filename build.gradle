@@ -28,7 +28,6 @@ repositories {
 
 dependencies {
 	compile 'com.google.maps:google-maps-services:(insert latest version)'
-	compile 'org.slf4j:slf4j-nop:1.7.25'
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.springframework.boot:spring-boot-devtools')
