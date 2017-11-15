@@ -12,7 +12,6 @@ public class Weather {
         this.location = location;
     }
 
-
     public String getTemperature() {
         return temperature;
     }
