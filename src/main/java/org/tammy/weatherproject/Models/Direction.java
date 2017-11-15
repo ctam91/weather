@@ -2,15 +2,19 @@ package org.tammy.weatherproject.Models;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import javax.validation.constraints.NotNull;
+
 
 public class Direction {
 
+    @NotNull
     private String origin;
+
+    @NotNull
     private String destination;
 
-    public Direction(String origin, String destination) {
-        this.origin = origin;
-        this.destination = destination;
+    // Default constructor
+    public Direction() {
     }
 
     public String getOrigin() {
