@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/weather.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 </head>
@@ -46,13 +45,7 @@
                 </form>
             </div>
             <div class="col-sm-9">
-                <iframe
-                        height="100%"
-                        width="100%"
-                        frameborder="0"
-                        style="border:0"
-                        th:src="@{${url}}">
-                </iframe>
+                <div id="map" style="width: 100%; height: 400px;"></div>
             </div>
         </div>
     </div>
@@ -60,7 +53,14 @@
 
 <section>
     <div class="container-fluid">
-        <div id="map" style="width: 400px; height: 400px;"></div>
+        <!--<iframe
+                height="400px"
+                width="100%"
+                frameborder="0"
+                style="border:0"
+                th:src="@{${url}}">
+        </iframe>
+        !-->
     </div>
 </section>
 <!-- Footer -->
@@ -69,7 +69,7 @@
 </footer>
 
 <script th:inline="javascript" src="js/script.js"></script>
-<script th:inline="javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx7XEeHmsTISxoWtJbAzMmBMbdnPJEj6E&amp;callback=initMap"></script>
+<script th:inline="javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQa-P3QPyuUibRfPncSVNswbiYjD7ua0&amp;callback=initMap" th:async="async" th:defer="defer"></script>
 
 
 </body>
