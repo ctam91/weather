@@ -37,11 +37,22 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3">
-                <h1 class="margin">Get Directions</h1>
-                <form method="post" class="pull-right" style="color: black">
-                    <input name="search" type="text" placeholder="Origin"/>
-                    <input name="search" type="text" placeholder="Destination"/>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                <h1 style="color:black" th:text="${direction.origin}"></h1>
+                <h1 class="margin" style="color:black" >Get Directions</h1>
+                <form th:align="center" method="post" style="margin=0 auto; color:black" th:object="${direction}"> <!--add action to correct path-->
+                    <div style="text-align:center">
+                        <label th:for="origin">Origin</label>
+                        <input th:field="${direction.origin}" />
+                        <span th:errors="*{origin}" class="error"></span>
+                        <span th:text="${originError}" class="error"></span>
+                    </div>
+                    <div style="text-align:center" class="form-group">
+                        <label th:for="destination">Destination</label>
+                        <input th:field="${direction.destination}" />
+                        <span th:errors="*{destination}" class="error"></span>
+                    </div>
+
+                    <input class="btn btn-success" type="submit" value="Submit!" />
                 </form>
             </div>
             <div class="col-sm-9">
