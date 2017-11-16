@@ -4,15 +4,12 @@ function initMap() {
           center: {lat: -33.8688, lng: 151.2195},
           zoom: 13
         });
-
-    //var result = $('form').serialize();
-   // var array = result.split("&");
-    //var origin_array = array[0].split("=");
-    //var origin = origin_array[1];
-
-    //var destination_array= array[1].split("=");
-    //var destination = destination_array[1];
-
+        var image = "/img/umbrella.png";
+        var marker = new google.maps.Marker({
+            position: {lat: -33.8688, lng: 151.2195},
+            map: map,
+            icon: image
+        });
 
         new AutocompleteDirectionsHandler(map);
       }
