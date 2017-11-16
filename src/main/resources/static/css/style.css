@@ -1,9 +1,3 @@
-  /* Always set the map height explicitly to define the size of the div
-   * element that contains the map. */
-
- #map {
-   height: 100%;
- }
 
   .controls {
     margin-top: 10px;
@@ -77,8 +71,21 @@
       padding-top: 15px;
       padding-bottom: 15px;
       background-color: #1abc9c; /* Green */
+      color: #fff !important;
 
   }
   .navbar-nav  li a:hover {
-      color: #1abc9c !important;
+      color: #777 !important;
   }
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #777;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
