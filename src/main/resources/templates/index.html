@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/" lang="en">
 <head>
-    <!-- Theme Made By www.w3schools.com - No Copyright -->
     <title>Weather Report</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 </head>
 <body>
-
+<!--
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -32,55 +29,32 @@
     </div>
 </nav>
 
-<!-- First Container -->
-<section id="home">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3">
-                <h1 class="margin" style="color:black" >Get Directions</h1>
-                <form th:align="center" method="post" style="margin=0 auto; color:black" th:object="${direction}"> <!--add action to correct path-->
-                    <div style="text-align:center">
-                        <label th:for="origin">Origin</label>
-                        <input th:field="${direction.origin}" />
-                        <span th:errors="*{origin}" class="error"></span>
-                        <span th:text="${originError}" class="error"></span>
-                    </div>
-                    <div style="text-align:center" class="form-group">
-                        <label th:for="destination">Destination</label>
-                        <input th:field="${direction.destination}" />
-                        <span th:errors="*{destination}" class="error"></span>
-                    </div>
+First Container -->
 
-                    <input class="btn btn-success" type="submit" value="Submit!" />
-                </form>
-            </div>
-            <div class="col-sm-9">
-                <div id="map" style="width: 100%; height: 400px;"></div>
-            </div>
-        </div>
-    </div>
-</section>
+    <div>
+    <input id="origin-input" class="controls" type="text"
+           placeholder="Enter an origin location" />
 
-<section>
-    <div class="container-fluid">
-        <!--<iframe
-                height="400px"
-                width="100%"
-                frameborder="0"
-                style="border:0"
-                th:src="@{${url}}">
-        </iframe>
-        !-->
+    <input id="destination-input" class="controls" type="text"
+           placeholder="Enter a destination location" />
     </div>
-</section>
-<!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
-    <p>Made By <a href="https://github.com/ctam91/">Tammy Chang</a></p>
-</footer>
+    <div id="mode-selector" class="controls">
+        <input type="radio" name="type" id="changemode-walking" checked="checked" />
+        <label for="changemode-walking">Walking</label>
+
+        <input type="radio" name="type" id="changemode-transit" />
+        <label for="changemode-transit">Transit</label>
+
+        <input type="radio" name="type" id="changemode-driving" />
+        <label for="changemode-driving">Driving</label>
+    </div>
+
+    <div id="map"></div>
 
 <script th:inline="javascript" src="js/script.js"></script>
-<script th:inline="javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQa-P3QPyuUibRfPncSVNswbiYjD7ua0&amp;callback=initMap" th:async="async" th:defer="defer"></script>
-
+<script th:inline="javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQa-P3QPyuUibRfPncSVNswbiYjD7ua0&amp;libraries=places&amp;callback=initMap" th:async="async" th:defer="defer"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>
