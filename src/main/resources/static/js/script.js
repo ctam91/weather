@@ -26,4 +26,12 @@
         directionsDisplay.setDirections(response);
       }
     });
+
+    var result = $('form').serialize();
+    console.log(result)
+    var array = result.split("&");
+    var origin_array = array[0].split("=");
+    var origin = origin_array[1];
+    var destination_array= array[1].split("=");
+    var destination = destination_array[1];
   }
