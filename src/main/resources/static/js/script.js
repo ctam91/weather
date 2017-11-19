@@ -1,12 +1,12 @@
 function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
-          center: {lat: 47.6062, lng: 122.3321},
+          center: {lat: 47.6062, lng: -122.3321},
           zoom: 13
         });
         var image = "/img/umbrella.png";
         var marker = new google.maps.Marker({
-            position: {lat: 47.6062, lng: 122.3321},
+            position: {lat: 47.6062, lng: -122.3321},
             map: map,
             icon: image
         });
