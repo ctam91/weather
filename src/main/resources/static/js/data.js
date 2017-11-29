@@ -7,6 +7,7 @@
 
 // Define function intialize.
   function initialize() {
+    var infowindow = new google.maps.InfoWindow();
     // Starts the map with a zoom of 4 and a center of (50,-50).
     var mapOptions = {
       zoom: 7,
@@ -15,8 +16,6 @@
     // Create a new Google Map instance, assign it to our map variable and place it in the template where the map id exists
     map = new google.maps.Map(document.getElementById('map'),
         mapOptions);
-
-    new AutocompleteDirectionsHandler(map);
 
     // Add interaction listeners to make weather requests
     google.maps.event.addListener(map, 'idle', checkIfDataRequested);
@@ -148,6 +147,12 @@
     });
   };
 
+    // Adds a listener to the window object, which as soon as the load event is triggered (i.e. "the page has finished loading") executes the function initialize.
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+        new AutocompleteDirectionsHandler(map);
+
+
        /**
         * @constructor
        */
@@ -226,6 +231,3 @@
           }
         });
       };
-
-  // Adds a listener to the window object, which as soon as the load event is triggered (i.e. "the page has finished loading") executes the function initialize.
-  google.maps.event.addDomListener(window, 'load', initialize);

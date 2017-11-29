@@ -71,7 +71,7 @@
                         + "&cluster=yes&format=json"
                         + "&APPID=" + openWeatherMapKey;
     request = new XMLHttpRequest();
-    request.onload = proccessResults;
+    request.onload = processResults;
     request.open("get", requestString, true);
     request.send();
   };
@@ -81,7 +81,7 @@
   // If the result's length is greater than 0 (if we have a result), clear the map and
   // for each element in the result, turn the json into GeoJson and add it to our geoJSON features.
   // Add icons (based on geoJSON) to the map.
-  var proccessResults = function() {
+  var processResults = function() {
     console.log(this);
     var results = JSON.parse(this.responseText);
     if (results.list.length > 0) {
