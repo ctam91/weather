@@ -1,30 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/" lang="en">
 <head>
+    <title>Weather Layer</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Weather layer</title>
-    <style>
-    html, body{
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    #map-canvas {
-      width: 100%;
-      height: 100%;
-    }
-    .gm-style-iw {
-      text-align: center;
-    }
-  </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 </head>
 <body>
 
-<div id="map-canvas"></div>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Weather Report</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section>
+    <div class="container" style="padding-top:100px;">
+
+        <div id="map" style="width: 90%; height: 500px; display: block; margin: 0 auto;"></div>
+    </div>
+</section>
+
 <script th:inline="javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQa-P3QPyuUibRfPncSVNswbiYjD7ua0">
 </script>
 <script th:inline="javascript" src="js/weather.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
