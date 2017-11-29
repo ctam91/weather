@@ -75,7 +75,11 @@
     request.send();
   };
 
-  // Take the JSON results and proccess them
+  // Take the JSON results and process them.
+  // Create a var called results to store the results.
+  // If the result's length is greater than 0 (if we have a result), clear the map and
+  // for each element in the result, turn the json into GeoJson and add it to our geoJSON features.
+  // Add icons (based on geoJSON) to the map.
   var proccessResults = function() {
     console.log(this);
     var results = JSON.parse(this.responseText);
@@ -88,7 +92,7 @@
     }
   };
 
-  // For each result that comes back, convert the data to geoJSON
+  // For each result that comes back, convert the data to geoJSON.
   var jsonToGeoJson = function (weatherItem) {
     var feature = {
       type: "Feature",
@@ -124,12 +128,14 @@
     // returns object
     return feature;
   };
+
   // Add the markers to the map
   var drawIcons = function (weather) {
      map.data.addGeoJson(geoJSON);
      // Set the flag to finished
      gettingData = false;
   };
+
   // Clear data layer and geoJSON
   var resetData = function () {
     geoJSON = {
