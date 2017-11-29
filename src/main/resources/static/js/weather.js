@@ -4,13 +4,14 @@
   var request;
   var gettingData = false;
   var openWeatherMapKey = "56ec6b66183fb28d7a0354e944c3a4fc";
+  var infowindow = new google.maps.InfoWindow();
 
 // Define function intialize.
   function initialize() {
     // Starts the map with a zoom of 4 and a center of (50,-50).
     var mapOptions = {
-      zoom: 4,
-      center: new google.maps.LatLng(50,-50)
+      zoom: 7,
+      center: {lat: 47.6062, lng: -122.3321},
     };
     // Create a new Google Map instance, assign it to our map variable and place it in the template where the map id exists
     map = new google.maps.Map(document.getElementById('map'),
@@ -19,8 +20,8 @@
     // Add interaction listeners to make weather requests
     google.maps.event.addListener(map, 'idle', checkIfDataRequested);
 
-    // Sets up and populates the info window with details.
-    // An info window displays content (usually text or images) above map at given location. Usually associate with a marker.
+    // Sets up and populates info windows with details.
+    // The info window displays a weather icon, city name, temperature in celsisu, and a short weather description above map at given location. Each info window is associate with a marker.
     map.data.addListener('click', function(event) {
       infowindow.setContent(
        "<img src=" + event.feature.getProperty("icon") + " >"
@@ -41,6 +42,7 @@
       infowindow.open(map);
     });
   }
+
   var checkIfDataRequested = function() {
     // Stop extra requests being sent
     while (gettingData === true) {
@@ -49,6 +51,7 @@
     }
     getCoords();
   };
+
   // Get the coordinates from the Map bounds
   var getCoords = function() {
     var bounds = map.getBounds();
@@ -56,6 +59,7 @@
     var SW = bounds.getSouthWest();
     getWeather(NE.lat(), NE.lng(), SW.lat(), SW.lng());
   };
+
   // Make the weather request
   var getWeather = function(northLat, eastLng, southLat, westLng) {
     gettingData = true;
@@ -70,6 +74,7 @@
     request.open("get", requestString, true);
     request.send();
   };
+
   // Take the JSON results and proccess them
   var proccessResults = function() {
     console.log(this);
@@ -82,7 +87,7 @@
         drawIcons(geoJSON);
     }
   };
-  var infowindow = new google.maps.InfoWindow();
+
   // For each result that comes back, convert the data to geoJSON
   var jsonToGeoJson = function (weatherItem) {
     var feature = {
