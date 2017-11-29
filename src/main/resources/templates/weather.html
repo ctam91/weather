@@ -37,8 +37,7 @@
     </div>
 </section>
 
-<script th:inline="javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQa-P3QPyuUibRfPncSVNswbiYjD7ua0">
-</script>
+<script th:inline="javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQa-P3QPyuUibRfPncSVNswbiYjD7ua0&amp;libraries=places&amp;callback=initMap" th:async="async" th:defer="defer"></script>
 <script th:inline="javascript" src="js/weather.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -1,18 +1,26 @@
+  // Global variables
   var map;
   var geoJSON;
   var request;
   var gettingData = false;
   var openWeatherMapKey = "56ec6b66183fb28d7a0354e944c3a4fc";
+
+// Define function intialize.
   function initialize() {
+    // Starts the map with a zoom of 4 and a center of (50,-50).
     var mapOptions = {
       zoom: 4,
       center: new google.maps.LatLng(50,-50)
     };
+    // Create a new Google Map instance, assign it to our map variable and place it in the template where the map id exists
     map = new google.maps.Map(document.getElementById('map'),
         mapOptions);
+
     // Add interaction listeners to make weather requests
     google.maps.event.addListener(map, 'idle', checkIfDataRequested);
-    // Sets up and populates the info window with details
+
+    // Sets up and populates the info window with details.
+    // An info window displays content (usually text or images) above map at given location. Usually associate with a marker.
     map.data.addListener('click', function(event) {
       infowindow.setContent(
        "<img src=" + event.feature.getProperty("icon") + " >"
@@ -127,4 +135,6 @@
       map.data.remove(feature);
     });
   };
+
+  // Adds a listener to the window object, which as soon as the load event is triggered (i.e. "the page has finished loading") executes the function initialize.
   google.maps.event.addDomListener(window, 'load', initialize);
