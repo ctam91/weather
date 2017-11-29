@@ -34,7 +34,7 @@ function initMap() {
               infowindow.setContent(
                "<img src=" + event.feature.getProperty("icon") + " >"
                + "<br /><strong>" + event.feature.getProperty("city") + "</strong>"
-               + "<br />" + event.feature.getProperty("temperature") + "&deg;C"
+               + "<br />" + convertTemp(event.feature.getProperty("temperature")) + "&deg;F"
                + "<br />" + event.feature.getProperty("weather")
                );
               infowindow.setOptions({
@@ -154,6 +154,11 @@ function initMap() {
               map.data.remove(feature);
             });
           };
+
+          var convertTemp = function(tempC){
+            var tempF = tempC * (9/5) + 32;
+            return Math.trunc(tempF)
+          }
 
           // Adds a listener to the window object, which as soon as the load event is triggered (i.e. "the page has finished loading") executes the function initialize.
           google.maps.event.addDomListener(window, 'load', initialize);
