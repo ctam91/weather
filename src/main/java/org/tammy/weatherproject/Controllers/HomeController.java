@@ -15,12 +15,12 @@ public class HomeController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model){
-        return "weather";
+        return "index";
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String index(Errors errors, Model model){
-        return "weather";
+        return "index";
     }
 
 }
