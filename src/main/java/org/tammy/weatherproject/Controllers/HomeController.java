@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
+//TODO: fix navbar transparency
+//TODO: add scrollbar to diretions
+//TODO: add placeholder text to directions panel or move dest/origin menu
+
 @Controller
 @RequestMapping("")
 
