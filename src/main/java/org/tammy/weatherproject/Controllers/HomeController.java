@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 //TODO: fix navbar transparency
 //TODO: add placeholder text to directions panel or move dest/origin menu
+//TODO: add about section
+//TODO: add db for user
+//TODO: add login/signup pages
+//TODO: store user preferences
 
 @Controller
 @RequestMapping("")
