@@ -178,6 +178,7 @@ function AutocompleteDirectionsHandler(map) {
     this.directionsService = new google.maps.DirectionsService;
     this.directionsDisplay = new google.maps.DirectionsRenderer;
     this.directionsDisplay.setMap(map);
+    this.directionsDisplay.setPanel(document.getElementById('right-panel'));
 
     var originAutocomplete = new google.maps.places.Autocomplete(originInput, {placeIdOnly: true});
     var destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput, {placeIdOnly: true});
