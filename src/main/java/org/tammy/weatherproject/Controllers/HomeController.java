@@ -37,9 +37,10 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public String index(Errors errors, Model model) {
-        return "index";
+    @RequestMapping(value = "about", method = RequestMethod.GET)
+    public String about(Model model) {
+        model.addAttribute("title", "About");
+        return "about";
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.GET)
