@@ -8,10 +8,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body class="container">
-<h1 align="center" th:text="${title}">Welcome to MatchFour!</h1>
+<h1 align="center" th:text="${title}">Default title</h1>
 
 <h2 align="center">Please enter your username and password: </h2>
-<p style="text-align:center">(You'll be able to track your best play time)</p>
 <form class="login list-group-login" th:align="center" method="post" style="margin=0 auto;" th:object="${user}"> <!--add action to correct path-->
     <div style="text-align:center" class="form-group">
         <label th:for="name">Username</label>
@@ -27,9 +26,9 @@
         <span th:text="${passwordError}" class="error"></span>
     </div>
 
-    <input th:align="center" type="submit" value="Let's Play!" />
+    <input th:align="center" type="submit" value="Login!" />
     <br />
-    <p>Don't have a username? <a href="signUp">Sign Up!</a> </p>
+    <p>Don't have a username? <a href="signup">Sign Up!</a> </p>
 </form>
 
 </body>

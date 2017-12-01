@@ -50,12 +50,12 @@ public class HomeController {
         return "signup";
     }
 
-    @RequestMapping(value = "signUp", method = RequestMethod.POST)
+    @RequestMapping(value = "signup", method = RequestMethod.POST)
     public String addUser(@ModelAttribute @Valid User user, Errors errors, Model model, RedirectAttributes ra, HttpSession session) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Sign up!");
-            return "userSignUp";
+            return "signup";
         }
 
         userData.generateUserList();
@@ -63,7 +63,7 @@ public class HomeController {
         if (userData.checkUserExists(user)) {
             model.addAttribute("title", "Sign up!");
             model.addAttribute("userError", "User name exists. Please select another.");
-            return "userSignUp";
+            return "signup";
         }
 
         userData.saveNewUser(user);
@@ -77,24 +77,24 @@ public class HomeController {
     public String logIn(Model model){
 
         model.addAttribute("user", new User());
-        model.addAttribute("title", "Welcome to MatchFour!" );
-        return "userLogin";
+        model.addAttribute("title", "Welcome to Weather Report!" );
+        return "login";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String logIn(@ModelAttribute @Valid User user, Errors errors, Model model, RedirectAttributes ra, HttpSession session) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Welcome to MatchFour!" );
+            model.addAttribute("title", "Welcome to Weather Report!" );
             model.addAttribute("user", new User());
-            return "userLogin";
+            return "login";
         }
 
         userData.generateUserList();
 
         if (!userData.checkUserExists(user)) {
 
-            model.addAttribute("title", "Welcome to MatchFour!" );
+            model.addAttribute("title", "Welcome to Weather Report!" );
             model.addAttribute("userError", "User name does not exist. Please sign up!");
             model.addAttribute("user", new User());
             return "login";
@@ -102,7 +102,7 @@ public class HomeController {
 
         else if (userData.checkUserExists(user) && !userData.verifyUserPassword(user)) {
 
-            model.addAttribute("title", "Welcome to MatchFour!" );
+            model.addAttribute("title", "Welcome to Weather Report!" );
             model.addAttribute("passwordError", "Invalid password!");
             model.addAttribute("user", new User());
             return "login";
