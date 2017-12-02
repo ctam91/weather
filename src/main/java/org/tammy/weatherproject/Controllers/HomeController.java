@@ -16,13 +16,12 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
-//TODO: fix navbar transparency
 //TODO: add placeholder text to directions panel or move dest/origin menu
-//TODO: add about section
-//TODO: add db for user
-//TODO: add login/signup pages
+//TODO: update about section
+//TODO: update login/signup pages
 //TODO: store user preferences
 //TODO: add custom weather icons
+//TODO: add favicon
 
 @Controller
 @RequestMapping("")

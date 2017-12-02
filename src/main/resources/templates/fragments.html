@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
-    <meta charset="UTF-8"/>
-    <title th:text="${title}">My Cheeses</title>
-
-    <link th:href="@{/css/styles.css}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Weather Report</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 </head>
 <body>
-
 
 <nav class="navbar navbar-default" th:fragment="navigation">
     <div class="container">
@@ -24,14 +22,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/home">Current Weather</a></li>
-                <li><a href="/radar">Map Radar</a></li>
-                <li><a href="/forecast">3 Day Forecast</a></li>
+                <li><a href="">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
-            <form method="post" class="nav-bar-form pull-right">
-                <input name="city" type="text" placeholder="city" />
-                <button type="submit" class="btn btn-success">Get the weather</button>
-            </form>
         </div>
     </div>
 </nav>
