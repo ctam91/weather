@@ -18,7 +18,6 @@ import javax.validation.Valid;
 
 //TODO: add placeholder text to directions panel or move dest/origin menu
 //TODO: update about section
-//TODO: update login/signup pages
 //TODO: store user preferences
 //TODO: add custom weather icons
 //TODO: add favicon
