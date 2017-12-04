@@ -20,7 +20,6 @@ import javax.validation.Valid;
 //TODO: update about section
 //TODO: store user preferences
 //TODO: add custom weather icons
-//TODO: add favicon
 
 @Controller
 @RequestMapping("")
