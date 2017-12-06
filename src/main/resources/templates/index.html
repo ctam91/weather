@@ -7,7 +7,7 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<section>
+<section id="home">
     <div class="container" style="padding-top:100px;">
         <div>
     <input id="origin-input" class="controls" type="text"
@@ -36,6 +36,23 @@
     </div>
     </div>
 </section>
+
+<!-- Third Container (Grid) -->
+<section id="forecast">
+    <div class="container-fluid bg-3 text-center">
+        <h3 class="margin">Three Day Forecast</h3>
+
+        <div class="row">
+            <div class="col-sm-3" th:each="forecast : ${forecasts}">
+                <h4 th:text="${forecast.day}"></h4>
+                <img th:src="@{${forecast.iconUrl}}" alt="Image"/>
+                <p th:text="${forecast.description}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <script th:inline="javascript" src="js/script.js"></script>
 <script th:inline="javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQa-P3QPyuUibRfPncSVNswbiYjD7ua0&amp;libraries=places&amp;callback=initMap" th:async="async" th:defer="defer"></script>
