@@ -1,5 +1,3 @@
-// Global variabes
-
 function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
@@ -7,13 +5,8 @@ function initMap() {
           zoom: 7
         });
 
-        var latitude,longitude;
-
-        var geocoder = new google.maps.Geocoder();
-
-        document.getElementById('destination-input').addEventListener('change', function() {
-          geocodeAddress(geocoder, map);
-        });
+        var latitude;
+        var longitude;
 
         /** var image = "/img/umbrella.png";
         var marker = new google.maps.Marker({
@@ -22,8 +15,14 @@ function initMap() {
             icon: image
         });
         */
-        new AutocompleteDirectionsHandler(map);
 
+         new AutocompleteDirectionsHandler(map);
+
+/*        document.getElementById('destination-input').addEventListener('change', function() {
+          console.log(acdh.destinationPlaceId)
+          console.log(acdh.destinationInput)
+          geocodeAddress(geocoder);
+        });*/
 
           var geoJSON;
           var request;
@@ -173,27 +172,7 @@ function initMap() {
           google.maps.event.addDomListener(window, 'load', initialize);
       }
 
-
- function geocodeAddress(geocoder, resultsMap) {
-    var address = document.getElementById('destination-input').value;
-    geocoder.geocode({'address': address}, function(results, status) {
-      if (status === 'OK') {
-        alert('Success!!')
-        alert(results[0].geometry.location)
-        console.log(results[0].geometry.location.toString())
-        var marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
-   /**
-    * @constructor
-   */
-function AutocompleteDirectionsHandler(map) {
+function AutocompleteDirectionsHandler(map,geocode) {
     this.map = map;
     this.originPlaceId = null;
     this.destinationPlaceId = null;
@@ -208,6 +187,8 @@ function AutocompleteDirectionsHandler(map) {
 
     var originAutocomplete = new google.maps.places.Autocomplete(originInput, {placeIdOnly: true});
     var destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput, {placeIdOnly: true});
+
+    this.geocoder = new google.maps.Geocoder();
 
     this.setupClickListener('changemode-walking', 'WALKING');
     this.setupClickListener('changemode-transit', 'TRANSIT');
@@ -256,7 +237,8 @@ function AutocompleteDirectionsHandler(map) {
       return;
     }
     var me = this;
-
+    console.log("DestinationPlaceId: " + this.destinationPlaceId)
+    console.log("Me DestinationPlaceId: " + me.destinationPlaceId)
     this.directionsService.route({
       origin: {'placeId': this.originPlaceId},
       destination: {'placeId': this.destinationPlaceId},
@@ -268,4 +250,21 @@ function AutocompleteDirectionsHandler(map) {
         window.alert('Directions request failed due to ' + status);
       }
     });
+    this.geocodeAddress(this.geocoder,this.destinationPlaceId)
   };
+
+  AutocompleteDirectionsHandler.prototype.geocodeAddress = function(geocoder, destination){
+    console.log("destination: " + destination)
+    geocoder.geocode({'placeId': destination}, function(results, status) {
+      if (status === 'OK') {
+        var resultString = results[0].geometry.location.toString().replace(" ", "").replace("(", "").replace(")", "");
+        var resultArray = resultString.split(",");
+        latitude = parseFloat(resultArray[0]);
+        longitude = parseFloat(resultArray[1]);
+        console.log("Latitude: " + latitude + " Longitude: " + longitude)
+        console.log(results[0].geometry.location.toString())
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
