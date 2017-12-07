@@ -228,6 +228,7 @@ function AutocompleteDirectionsHandler(map,geocode) {
         me.destinationPlaceId = place.place_id;
       }
       me.route();
+      me.geocodeAddress(me.geocoder, me.destinationPlaceId)
     });
 
   };
@@ -237,8 +238,6 @@ function AutocompleteDirectionsHandler(map,geocode) {
       return;
     }
     var me = this;
-    console.log("DestinationPlaceId: " + this.destinationPlaceId)
-    console.log("Me DestinationPlaceId: " + me.destinationPlaceId)
     this.directionsService.route({
       origin: {'placeId': this.originPlaceId},
       destination: {'placeId': this.destinationPlaceId},
@@ -250,10 +249,12 @@ function AutocompleteDirectionsHandler(map,geocode) {
         window.alert('Directions request failed due to ' + status);
       }
     });
-    this.geocodeAddress(this.geocoder,this.destinationPlaceId)
   };
 
   AutocompleteDirectionsHandler.prototype.geocodeAddress = function(geocoder, destination){
+      if (!this.destinationPlaceId) {
+        return;
+      }
     console.log("destination: " + destination)
     geocoder.geocode({'placeId': destination}, function(results, status) {
       if (status === 'OK') {
