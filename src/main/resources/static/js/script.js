@@ -7,27 +7,14 @@ function initMap() {
           zoom: 7
         });
 
+        var latitude,longitude;
+
         var geocoder = new google.maps.Geocoder();
 
         document.getElementById('destination-input').addEventListener('change', function() {
           geocodeAddress(geocoder, map);
         });
 
-     function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('destination-input').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            alert('Success!!')
-            console.log(results[0].geometry.location)
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
         /** var image = "/img/umbrella.png";
         var marker = new google.maps.Marker({
             position: {lat: 47.6062, lng: -122.3321},
@@ -185,6 +172,24 @@ function initMap() {
           // Adds a listener to the window object, which as soon as the load event is triggered (i.e. "the page has finished loading") executes the function initialize.
           google.maps.event.addDomListener(window, 'load', initialize);
       }
+
+
+ function geocodeAddress(geocoder, resultsMap) {
+    var address = document.getElementById('destination-input').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        alert('Success!!')
+        alert(results[0].geometry.location)
+        console.log(results[0].geometry.location.toString())
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
    /**
     * @constructor
    */
