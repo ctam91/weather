@@ -9,22 +9,25 @@ function initMap() {
 
         var geocoder = new google.maps.Geocoder();
 
-        document.getElementById('destination-input').onchange = function geocodeAddress(geocoder) {
-              var address = document.getElementById('destination-input').value;
-              geocoder.geocode({'address': address}, function(results, status) {
-                if (status === 'OK') {
-                  alert('Successful!')
-                  var image = "/img/umbrella.png";
-                  var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location,
-                    icon: image
-                  });
-                } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-                }
-              });
-            }
+        document.getElementById('destination-input').addEventListener('change', function() {
+          geocodeAddress(geocoder, map);
+        });
+
+     function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('destination-input').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            alert('Success!!')
+            console.log(results[0].geometry.location)
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
         /** var image = "/img/umbrella.png";
         var marker = new google.maps.Marker({
             position: {lat: 47.6062, lng: -122.3321},
