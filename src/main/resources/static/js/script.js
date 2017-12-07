@@ -22,12 +22,15 @@ function initMap() {
           var gettingData = false;
           var openWeatherMapKey = "56ec6b66183fb28d7a0354e944c3a4fc";
           var infowindow = new google.maps.InfoWindow();
+          var geocoder;
 
         // Define function intialize.
           function initialize() {
             // Add interaction listeners to make weather requests
             google.maps.event.addListener(map, 'idle', checkIfDataRequested);
 
+            // add a geocoder instance
+            geocoder = new google.maps.Geocoder();
             // Sets up and populates info windows with details.
             // The info window displays a weather icon, city name, temperature in celsisu, and a short weather description above map at given location. Each info window is associate with a marker.
             map.data.addListener('click', function(event) {
