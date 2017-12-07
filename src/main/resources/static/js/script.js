@@ -31,6 +31,11 @@ function initMap() {
 
             // add a geocoder instance
             geocoder = new google.maps.Geocoder();
+
+            map.data.addListener('click', function() {
+                                           geocodeAddress(geocoder, map);
+                                         });
+
             // Sets up and populates info windows with details.
             // The info window displays a weather icon, city name, temperature in celsisu, and a short weather description above map at given location. Each info window is associate with a marker.
             map.data.addListener('click', function(event) {
@@ -163,9 +168,27 @@ function initMap() {
             return Math.trunc(tempF)
           }
 
+
+        function geocodeAddress(geocoder, resultsMap) {
+          var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+          var address = document.getElementById('destination-input').value;
+          geocoder.geocode({'destination-input': address}, function(results, status) {
+            if (status === 'OK') {
+              console.log(results[0].geometry.location)
+              var marker = new google.maps.Marker({
+                map: resultsMap,
+                position: results[0].geometry.location
+                icon: image
+              });
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
           // Adds a listener to the window object, which as soon as the load event is triggered (i.e. "the page has finished loading") executes the function initialize.
           google.maps.event.addDomListener(window, 'load', initialize);
       }
+
 
    /**
     * @constructor
