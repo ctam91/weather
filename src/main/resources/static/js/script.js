@@ -16,7 +16,7 @@ function initMap() {
         });
         */
 
-         new AutocompleteDirectionsHandler(map);
+         new DirectionsHandler(map);
 
 /*        document.getElementById('destination-input').addEventListener('change', function() {
           console.log(acdh.destinationPlaceId)
@@ -172,7 +172,7 @@ function initMap() {
           google.maps.event.addDomListener(window, 'load', initialize);
       }
 
-function AutocompleteDirectionsHandler(map,geocode) {
+function DirectionsHandler(map) {
     this.map = map;
     this.originPlaceId = null;
     this.destinationPlaceId = null;
@@ -204,7 +204,7 @@ function AutocompleteDirectionsHandler(map,geocode) {
 
   // Sets a listener on a radio button to change the filter type on Places
   // Autocomplete.
-  AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+  DirectionsHandler.prototype.setupClickListener = function(id, mode) {
     var radioButton = document.getElementById(id);
     var me = this;
     radioButton.addEventListener('click', function() {
@@ -213,7 +213,7 @@ function AutocompleteDirectionsHandler(map,geocode) {
     });
   };
 
-  AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+  DirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
     var me = this;
     autocomplete.bindTo('bounds', this.map);
     autocomplete.addListener('place_changed', function() {
@@ -233,7 +233,7 @@ function AutocompleteDirectionsHandler(map,geocode) {
 
   };
 
-  AutocompleteDirectionsHandler.prototype.route = function() {
+  DirectionsHandler.prototype.route = function() {
     if (!this.originPlaceId || !this.destinationPlaceId) {
       return;
     }
@@ -251,7 +251,7 @@ function AutocompleteDirectionsHandler(map,geocode) {
     });
   };
 
-  AutocompleteDirectionsHandler.prototype.geocodeAddress = function(geocoder, destination){
+  DirectionsHandler.prototype.geocodeAddress = function(geocoder, destination){
       if (!this.destinationPlaceId) {
         return;
       }
